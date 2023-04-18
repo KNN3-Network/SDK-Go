@@ -17,3 +17,7 @@ func NewKNN3SDK(apiKey string) *KNN3SDK {
 func (sdk *KNN3SDK) GetAddr(address string) (IAddress, error) {
 	return getAddr(address, sdk.apiKey)
 }
+
+func (sdk *KNN3SDK) GetAddrList(addressIn []string, limit int, cursor string) (*IAddrList, error) {
+	return getAddrList(addressIn, limit, cursor, sdk.apiKey)
+}
