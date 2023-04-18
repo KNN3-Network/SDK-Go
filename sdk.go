@@ -21,3 +21,7 @@ func (sdk *KNN3SDK) GetAddr(address string) (IAddress, error) {
 func (sdk *KNN3SDK) GetAddrList(addressIn []string, limit int, cursor string) (*IAddrList, error) {
 	return getAddrList(addressIn, limit, cursor, sdk.apiKey)
 }
+
+func (sdk *KNN3SDK) AddEvents(address string, eventName string, limit int, cursor string) (*IAddrAttendEventsList, error) {
+	return addEvents(address, eventName, limit, cursor, sdk.apiKey)
+}

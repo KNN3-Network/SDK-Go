@@ -45,3 +45,22 @@ func TestGetAddrList(t *testing.T) {
 		t.Errorf("Unexpected cursor: expected %s, got %s", expectedCursor, addrList.Cursor)
 	}
 }
+
+func TestAttendEvent(t *testing.T) {
+	// Set up test data
+	address := "0x535824c63d3421c703cb022aba55c321a6e30bf4"
+	// 创建 KNN3SDK 实例并设置 API 密钥
+	knn3sdk := NewKNN3SDK("")
+	// Call the GetAddrList method and check the results
+	eventList, err := knn3sdk.AddEvents(address, "eth", 2, "ethberlinzwei")
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err.Error())
+	}
+	expectedListLen := 2
+	if len(eventList.List) != expectedListLen {
+		t.Errorf("Unexpected address list length: expected %d, got %d", expectedListLen, len(eventList.List))
+	}
+	if eventList.List[0].Name != "ethberlinzwei" {
+		t.Errorf("Unexpected name: expected %s, got %s", "ethberlinzwei", eventList.List[0].Name)
+	}
+}
